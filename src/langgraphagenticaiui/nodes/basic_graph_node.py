@@ -8,3 +8,4 @@ class basic_graph_node:
         "generate the response of following question"
 
         return {"messages":self.llm.invoke(state["messages"])}
+

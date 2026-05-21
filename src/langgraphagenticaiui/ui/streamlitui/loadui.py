@@ -1,5 +1,6 @@
 import streamlit as st
 from src.langgraphagenticaiui.ui.uiconfigfiles import Config
+import os
 
 class LoadStreamlitUi:
     def __init__(self):
@@ -23,8 +24,14 @@ class LoadStreamlitUi:
 
                 self.user_control["SELECTED_MODEL"]=st.selectbox("Select model",model_options)
 
-                self.user_control["GROQ_API_KEY"]=st.text_input("API_key",type="password")
+                self.user_control["GROQ_API_KEY"]=st.text_input("Groq_Api_key",type="password")
                 st.session_state["GROQ_API_KEY"]=self.user_control["GROQ_API_KEY"]
             self.user_control["SELECTED_USE_CASE"]=st.selectbox("Use case",use_case_options)
+
+            if self.user_control["SELECTED_USE_CASE"]=="chatbot with tool":
+                self.user_control["TAVILY_API_KEY"]=st.text_input("Tavily_API_key",type="password")
+                st.session_state["TAVILY_API_KEY"]=self.user_control["TAVILY_API_KEY"]
+                os.environ["TAVILY_API_KEY"]=self.user_control["TAVILY_API_KEY"]
+
         
         return self.user_control

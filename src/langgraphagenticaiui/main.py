@@ -38,11 +38,11 @@ def load_agentic_app():
                 DisplayResultStreamlit(use_case,graph,user_message).display_result_on_ui()
 
             except Exception as e:
-                raise ValueError(f"the error is {e}")
+                st.exception(e)
             
 
         except Exception as e:
-            raise ValueError(f"the error is {e}")
+            st.exception(e)
     
 
     
